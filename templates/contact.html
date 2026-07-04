@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Contact | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream">
+  <div class="container form-layout">
+    <div class="panel">
+      <div class="section-title">
+        <p data-i18n="contact">Contact</p>
+        <h2 data-i18n="supportDesk">Agriculture Support Desk</h2>
+      </div>
+      <form class="crop-form" method="post">
+        <label><span data-i18n="name">Name</span><input name="name" required></label>
+        <label><span data-i18n="email">Email</span><input type="email" name="email" required></label>
+        <label><span data-i18n="district">District</span><input name="district" required></label>
+        <label><span data-i18n="message">Message</span><textarea name="message" rows="5" required></textarea></label>
+        <button class="button button--primary" type="submit"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="sendMessage">Send Message</span></button>
+      </form>
+    </div>
+    <aside class="notice-card">
+      <h3><i class="fa-solid fa-location-dot"></i> <span data-i18n="office">Office</span></h3>
+      <p data-i18n="officeAddress">Department of Agriculture and Farmers Welfare, Chennai, Tamil Nadu</p>
+      <h3><i class="fa-solid fa-envelope"></i> <span data-i18n="email">Email</span></h3>
+      <p>agri-support@example.tn.gov.in</p>
+      <h3><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq">FAQ</span></h3>
+      <p data-i18n="faqText">Weather values come from OpenWeatherMap when configured. Prediction history appears after MongoDB Atlas is connected.</p>
+    </aside>
+  </div>
+</section>
+{% endblock %}

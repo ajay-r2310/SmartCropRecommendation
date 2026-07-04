@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title %}Recommendation | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero__content fade-in">
+    <p class="kicker"><i class="fa-solid fa-leaf"></i> <span data-i18n="heroKicker">Tamil Nadu Agriculture Intelligence</span></p>
+    <h2 data-i18n="heroTitle">Choose the right crop with weather-aware AI guidance.</h2>
+    <p data-i18n="heroText">Enter district, soil, season, and farm area to receive a practical crop recommendation with yield, profit, and sowing guidance.</p>
+    <a class="button button--gold" href="#recommendation"><i class="fa-solid fa-arrow-down"></i> <span data-i18n="heroCta">Start Recommendation</span></a>
+  </div>
+</section>
+
+<section id="recommendation" class="section section--cream">
+  <div class="container form-layout">
+    <div class="panel slide-up">
+      <div class="section-title">
+        <p data-i18n="recommendation">Recommendation</p>
+        <h2 data-i18n="farmInput">Farm Input Details</h2>
+      </div>
+      <form class="crop-form" method="post" action="{{ url_for('main.recommend') }}" novalidate>
+        <label>
+          <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="location">Location</span></span>
+          <select name="location" required>
+            <option value="" data-i18n="selectDistrict">Select district</option>
+            {% for district in districts %}<option value="{{ district }}" data-translate-value="district">{{ district }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>
+          <span><i class="fa-solid fa-layer-group"></i> <span data-i18n="soilType">Soil Type</span></span>
+          <select name="soil_type" required>
+            <option value="" data-i18n="selectSoil">Select soil type</option>
+            {% for soil in soil_types %}<option value="{{ soil }}" data-translate-value="soil">{{ soil }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>
+          <span><i class="fa-solid fa-calendar-days"></i> <span data-i18n="season">Season</span></span>
+          <select name="season" required>
+            <option value="" data-i18n="selectSeason">Select season</option>
+            {% for season in seasons %}<option value="{{ season }}" data-translate-value="season">{{ season }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>
+          <span><i class="fa-solid fa-ruler-combined"></i> <span data-i18n="landArea">Land Area in Acres</span></span>
+          <input name="land_area" type="number" min="0.01" max="10000" step="0.01" placeholder="Example: 2.5" data-i18n-placeholder="landPlaceholder" required>
+        </label>
+        <button class="button button--primary button--full" type="submit">
+          <i class="fa-solid fa-seedling"></i> <span data-i18n="predictButton">Predict Best Crop</span>
+        </button>
+        <div class="loading" aria-hidden="true"><span></span> <span data-i18n="loadingText">Fetching weather and generating recommendation...</span></div>
+      </form>
+    </div>
+    <aside class="notice-card slide-up">
+      <h3><i class="fa-solid fa-bullhorn"></i> <span data-i18n="noticeTitle">Agriculture Notice</span></h3>
+      <p data-i18n="noticeText">Recommendations use weather, soil, season, and regional crop patterns. Farmers should also consider field inspection, water availability, and local extension officer advice.</p>
+      <div class="metric-strip">
+        <span><strong>38</strong> <span data-i18n="districts">Districts</span></span>
+        <span><strong>7</strong> <span data-i18n="soilTypes">Soil Types</span></span>
+        <span><strong>10</strong> <span data-i18n="crops">Crops</span></span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <p data-i18n="advisory">Advisory</p>
+      <h2 data-i18n="tipsTitle">Agriculture Tips</h2>
+    </div>
+    <div class="card-grid">
+      <article class="info-card"><i class="fa-solid fa-cloud-rain"></i><h3 data-i18n="tipRainTitle">Track Rainfall</h3><p data-i18n="tipRainText">Plan irrigation and sowing around expected rainfall and soil moisture.</p></article>
+      <article class="info-card"><i class="fa-solid fa-flask"></i><h3 data-i18n="tipSoilTitle">Test Soil</h3><p data-i18n="tipSoilText">Review soil nutrients before major seasonal crop changes.</p></article>
+      <article class="info-card"><i class="fa-solid fa-chart-line"></i><h3 data-i18n="tipMarketTitle">Monitor Market</h3><p data-i18n="tipMarketText">Combine AI recommendations with mandi price trends and demand.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--green">
+  <div class="container">
+    <div class="section-title section-title--light">
+      <p data-i18n="platformServices">Platform Services</p>
+      <h2 data-i18n="servicesTitle">Built for reliable crop planning</h2>
+    </div>
+    <div class="service-grid">
+      <div><i class="fa-solid fa-temperature-half"></i><span data-i18n="serviceWeather">Live weather fetch</span></div>
+      <div><i class="fa-solid fa-robot"></i><span data-i18n="serviceMl">Machine learning recommendation</span></div>
+      <div><i class="fa-solid fa-indian-rupee-sign"></i><span data-i18n="serviceProfit">Profit estimation</span></div>
+      <div><i class="fa-solid fa-database"></i><span data-i18n="serviceHistory">MongoDB history</span></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

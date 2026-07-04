@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+.env.local
+
+# VS Code
+.vscode/
+
+# Logs
+logs/*.log
+!logs/app.log
+
+# Database Files
+*.db
+
+# ML Models (Don't upload if they're large or generated)
+models/model.pkl
+models/label_encoder.pkl
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# Python Cache
+.mypy_cache/

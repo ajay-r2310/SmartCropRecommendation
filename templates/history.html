@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}History | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-title">
+      <p data-i18n="predictionRecords">Prediction Records</p>
+      <h2 data-i18n="historyTitle">Recommendation History</h2>
+    </div>
+    <form class="filter-bar" method="get">
+      <select name="crop">
+        <option value="" data-i18n="allCrops">All crops</option>
+        {% for crop in crops %}<option value="{{ crop }}" data-translate-value="crop" {% if selected_crop == crop %}selected{% endif %}>{{ crop }}</option>{% endfor %}
+      </select>
+      <select name="season">
+        <option value="" data-i18n="allSeasons">All seasons</option>
+        {% for season in seasons %}<option value="{{ season }}" data-translate-value="season" {% if selected_season == season %}selected{% endif %}>{{ season }}</option>{% endfor %}
+      </select>
+      <button class="button button--primary" type="submit"><i class="fa-solid fa-filter"></i> <span data-i18n="apply">Apply</span></button>
+      <a class="button button--outline" href="{{ url_for('main.export_history', crop=selected_crop, season=selected_season) }}"><i class="fa-solid fa-file-csv"></i> <span data-i18n="exportCsv">Export CSV</span></a>
+    </form>
+    <div class="table-card">
+      <input class="table-search" type="search" placeholder="Search history" aria-label="Search history" data-i18n-placeholder="searchHistory">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th data-i18n="time">Time</th><th data-i18n="location">Location</th><th data-i18n="soil">Soil</th><th data-i18n="season">Season</th><th data-i18n="crop">Crop</th><th data-i18n="yield">Yield</th><th data-i18n="profit">Profit</th></tr>
+          </thead>
+          <tbody>
+            {% for item in predictions %}
+              <tr>
+                <td>{{ item.prediction_time|datetime }}</td>
+                <td data-translate-value="district">{{ item.location }}</td>
+                <td data-translate-value="soil">{{ item.soil_type }}</td>
+                <td data-translate-value="season">{{ item.season }}</td>
+                <td><strong data-translate-value="crop">{{ item.predicted_crop }}</strong></td>
+                <td>{{ item.expected_yield }} t</td>
+                <td>{{ item.estimated_profit|currency }}</td>
+              </tr>
+            {% else %}
+              <tr><td colspan="7" class="empty" data-i18n="emptyHistory">No prediction history found. Configure MongoDB Atlas and create a recommendation.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

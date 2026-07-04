@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Page Not Found | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream center-state">
+  <i class="fa-solid fa-triangle-exclamation"></i>
+  <h2 data-i18n="notFoundTitle">Page not found</h2>
+  <p data-i18n="notFoundText">The requested agriculture service page is unavailable.</p>
+  <a class="button button--primary" href="{{ url_for('main.index') }}" data-i18n="returnHome">Return Home</a>
+</section>
+{% endblock %}

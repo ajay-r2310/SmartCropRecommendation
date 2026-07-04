@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Server Error | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream center-state">
+  <i class="fa-solid fa-screwdriver-wrench"></i>
+  <h2 data-i18n="serverErrorTitle">Service temporarily unavailable</h2>
+  <p data-i18n="serverErrorText">Please try again after a few moments.</p>
+  <a class="button button--primary" href="{{ url_for('main.index') }}" data-i18n="returnHome">Return Home</a>
+</section>
+{% endblock %}

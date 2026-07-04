@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Prediction Result | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream">
+  <div class="container result-head fade-in">
+    <div>
+      <p class="kicker"><i class="fa-solid fa-circle-check"></i> <span data-i18n="resultGenerated">Recommendation Generated</span></p>
+      <h2><span data-translate-value="crop">{{ result.predicted_crop }}</span> <span data-i18n="resultBestCrop">is the best crop for</span> <span data-translate-value="district">{{ result.location }}</span></h2>
+      <p>
+        <span data-i18n="resultBasedOnPrefix">Based on</span>
+        <span data-translate-value="soil">{{ result.soil_type }}</span>
+        <span data-i18n="soilLower">soil</span>,
+        <span data-translate-value="season">{{ result.season }}</span>
+        <span data-i18n="seasonLower">season</span>,
+        {{ result.land_area }}
+        <span data-i18n="acresLower">acres</span>,
+        <span data-i18n="resultBasedOnSuffix">and weather values.</span>
+      </p>
+    </div>
+    <div class="crop-badge"><i class="fa-solid fa-wheat-awn"></i><span data-translate-value="crop">{{ result.predicted_crop }}</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="container dashboard-grid">
+    <article class="dash-card dash-card--primary"><i class="fa-solid fa-leaf"></i><p data-i18n="recommendedCrop">Recommended Crop</p><h3 data-translate-value="crop">{{ result.predicted_crop }}</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-temperature-half"></i><p data-i18n="temperature">Temperature</p><h3>{{ result.temperature }}°C</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-droplet"></i><p data-i18n="humidity">Humidity</p><h3>{{ result.humidity }}%</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-cloud-rain"></i><p data-i18n="rainfall">Rainfall</p><h3>{{ result.rainfall }} mm</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-scale-balanced"></i><p data-i18n="expectedYield">Expected Yield</p><h3>{{ result.expected_yield }} tonnes</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-indian-rupee-sign"></i><p data-i18n="estimatedProfit">Estimated Profit</p><h3>{{ result.estimated_profit|currency }}</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-calendar-check"></i><p data-i18n="sowingMonth">Best Sowing Month</p><h3 data-translate-value="month">{{ result.sowing_month }}</h3></article>
+    <article class="dash-card"><i class="fa-solid fa-gauge-high"></i><p data-i18n="confidence">Confidence</p><h3>{{ result.confidence }}%</h3></article>
+  </div>
+  <div class="container result-actions">
+    <a class="button button--primary" href="{{ url_for('main.index') }}#recommendation"><i class="fa-solid fa-rotate-right"></i> <span data-i18n="newRecommendation">New Recommendation</span></a>
+    <a class="button button--outline" href="{{ url_for('main.history') }}"><i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="viewHistory">View History</span></a>
+  </div>
+</section>
+{% endblock %}

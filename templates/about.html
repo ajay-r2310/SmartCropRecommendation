@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}About | Smart Crop Recommendation System{% endblock %}
+{% block content %}
+<section class="section section--cream">
+  <div class="container two-column">
+    <div>
+      <p class="kicker"><i class="fa-solid fa-circle-info"></i> <span data-i18n="aboutProject">About the Project</span></p>
+      <h2 data-i18n="aboutTitle">AI support for practical agricultural planning</h2>
+      <p data-i18n="aboutTextOne">The platform combines district selection, soil type, season, land area, live weather data, and a Random Forest model to recommend a suitable crop for Tamil Nadu farming conditions.</p>
+      <p data-i18n="aboutTextTwo">It helps farmers and administrators compare crop suitability, expected yield, likely profit, and sowing windows through a clear digital service interface.</p>
+    </div>
+    <div class="panel">
+      <h3 data-i18n="techFoundation">Technology Foundation</h3>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-brain"></i> <span data-i18n="techModel">Scikit-learn Random Forest model</span></li>
+        <li><i class="fa-solid fa-cloud-sun"></i> <span data-i18n="techWeather">OpenWeatherMap weather service</span></li>
+        <li><i class="fa-solid fa-database"></i> <span data-i18n="techDb">MongoDB Atlas prediction history</span></li>
+        <li><i class="fa-solid fa-shield-halved"></i> <span data-i18n="techSecurity">Validated inputs and environment-based configuration</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
