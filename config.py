@@ -25,4 +25,5 @@ class Config:
     LABEL_ENCODER_PATH: Path = BASE_DIR / "models" / "label_encoder.pkl"
     PROCESSED_DATA_PATH: Path = BASE_DIR / "data" / "processed" / "crop_training_data.csv"
     LOG_FILE: Path = BASE_DIR / "logs" / "app.log"
+    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
 
