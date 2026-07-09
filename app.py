@@ -9,7 +9,7 @@ from flask import Flask, render_template
 
 from config import Config
 from routes.main_routes import main_bp
-
+from routes.chat_routes import chat_bp
 
 def create_app() -> Flask:
     """Create and configure the Flask application."""
@@ -20,6 +20,7 @@ def create_app() -> Flask:
     configure_logging(app)
 
     app.register_blueprint(main_bp)
+    app.register_blueprint(chat_bp)
 
     @app.errorhandler(404)
     def not_found(_error):
